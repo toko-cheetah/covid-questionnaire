@@ -1,12 +1,12 @@
 <template>
   <div
-    class="w-screenn h-screen flex flex-col justify-center items-center bg-inherit"
+    class="w-full h-full flex flex-col justify-center items-center bg-inherit"
   >
     <div class="p-12 bg-inherit z-10">
       <RedberryLogo id="redberry-logo" />
     </div>
 
-    <router-link to="#">
+    <router-link :to="{ name: 'personal_info' }">
       <p class="text-center font-tbc-contractica-caps-bold text-3xl relative">
         კითხვარის <br />
         დაწყება
