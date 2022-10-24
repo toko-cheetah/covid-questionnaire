@@ -1,35 +1,9 @@
 import { defineRule } from "vee-validate";
+import { required, email, min } from "@vee-validate/rules";
 
-defineRule("required", (value) => {
-  if (!value || !value.length) {
-    return "ეს ველი სავალდებულოა";
-  }
-  return true;
-});
-
-defineRule("min", (value, [limit]) => {
-  if (!value || !value.length) {
-    return true;
-  }
-
-  if (value.length < limit) {
-    return `უნდა შედგებოდეს მინიმუმ ${limit} სიმბოლოსგან`;
-  }
-
-  return true;
-});
-
-defineRule("email", (value) => {
-  if (!value || !value.length) {
-    return true;
-  }
-
-  if (!value.includes("@")) {
-    return "თქვენ მიერ შეყვანილი მეილი არასწორია";
-  }
-
-  return true;
-});
+defineRule("required", required);
+defineRule("email", email);
+defineRule("min", min);
 
 defineRule("redberry_email", (value) => {
   if (!value || !value.length) {
@@ -46,7 +20,7 @@ defineRule("redberry_email", (value) => {
       value.length > "@redberry.ge".length
     )
   ) {
-    return "გთხოვთ დარეგისტრირდეთ Redberry-ს მეილით (youremail@redberry.ge)";
+    return false;
   }
 
   return true;

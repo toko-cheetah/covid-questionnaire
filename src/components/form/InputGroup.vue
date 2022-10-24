@@ -22,7 +22,6 @@
 
 <script>
 import { Field, ErrorMessage as VErrorMessage } from "vee-validate";
-import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -32,9 +31,11 @@ export default {
 
   props: ["label", "name", "type", "rules"],
 
-  computed: mapGetters(["value"]),
-
   methods: {
+    value(name) {
+      return this.$store.state[name] && this.$store.state[name];
+    },
+
     updateValue(e) {
       this.$store.commit("updateValue", {
         key: e.target.name,

@@ -9,6 +9,7 @@ import PageChangeButtons from "./components/layout/PageChangeButtons.vue";
 
 import "./assets/main.css";
 import "./config/vee-validate/rules";
+import "./config/vee-validate/messages";
 
 const app = createApp(App);
 

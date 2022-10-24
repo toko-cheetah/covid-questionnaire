@@ -25,12 +25,6 @@ const store = createStore({
     };
   },
 
-  getters: {
-    value: (state) => (key) => {
-      return state[key];
-    },
-  },
-
   mutations: {
     updateValue(state, payload) {
       state[payload.key] = payload.message;
