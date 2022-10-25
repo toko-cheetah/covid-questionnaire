@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute top-[900px] left-1/2 -translate-x-1/2 w-36 flex justify-between"
+    class="absolute top-[950px] left-1/2 -translate-x-1/2 z-20 w-36 flex justify-between"
   >
     <button :class="hidePreviousBtn ? 'invisible' : ''">
       <router-link :to="{ name: previousPageName }">

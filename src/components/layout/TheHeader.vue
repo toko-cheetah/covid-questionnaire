@@ -23,6 +23,7 @@ export default {
       pages: {
         personal_info: "1",
         covid_condition: "2",
+        are_you_vaccinated: "3",
       },
     };
   },

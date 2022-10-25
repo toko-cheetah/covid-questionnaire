@@ -4,13 +4,16 @@
       {{ label }}
     </label>
 
-    <Field
-      class="py-2 px-5 border border-solid border-gray-800 bg-inherit text-lg"
+    <VField
+      class="py-2 px-5 border border-solid border-gray-800 bg-inherit text-lg placeholder-gray-500"
       :name="name"
       :type="type"
       :rules="rules"
       :value="value(name)"
       @input="updateValue"
+      :placeholder="placeholder"
+      :onfocus="onfocus"
+      :onblur="onblur"
     />
 
     <VErrorMessage
@@ -21,25 +24,28 @@
 </template>
 
 <script>
-import { Field, ErrorMessage as VErrorMessage } from "vee-validate";
-
 export default {
-  components: {
-    Field,
-    VErrorMessage,
-  },
-
-  props: ["label", "name", "type", "rules"],
+  props: ["label", "name", "type", "rules", "placeholder", "onfocus", "onblur"],
 
   methods: {
     value(name) {
-      return this.$store.state[name] && this.$store.state[name];
+      return (
+        (this.$store.state[name] || this.$store.state.antibodies[name]) &&
+        (name === "test_date" || name === "number"
+          ? this.$store.state.antibodies[name]
+          : this.$store.state[name])
+      );
     },
 
     updateValue(e) {
       this.$store.commit("updateValue", {
         key: e.target.name,
-        message: e.target.value,
+        message:
+          e.target.type === "date"
+            ? new Date(e.target.value).toLocaleDateString("en-GB")
+            : e.target.type === "number"
+            ? Number(e.target.value)
+            : e.target.value,
       });
     },
   },

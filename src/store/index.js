@@ -27,7 +27,9 @@ const store = createStore({
 
   mutations: {
     updateValue(state, payload) {
-      state[payload.key] = payload.message;
+      payload.key === "test_date" || payload.key === "number"
+        ? (state.antibodies[payload.key] = payload.message)
+        : (state[payload.key] = payload.message);
     },
   },
 });
