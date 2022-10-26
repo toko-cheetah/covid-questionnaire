@@ -13,7 +13,20 @@
 
 <script>
 export default {
-  props: ["name", "value", "label"],
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    value: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+  },
 
   methods: {
     updateValue(e) {

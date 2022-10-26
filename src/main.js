@@ -8,7 +8,10 @@ import {
   Field as VField,
   ErrorMessage as VErrorMessage,
 } from "vee-validate";
+import BaseLayout from "./components/layout/BaseLayout.vue";
+import TheForm from "./components/form/TheForm.vue";
 import InputGroup from "./components/form/InputGroup.vue";
+import InputRadioLayout from "./components/form/InputRadioLayout.vue";
 import InputRadioTitle from "./components/form/InputRadioTitle.vue";
 import InputRadioLabel from "./components/form/InputRadioLabel.vue";
 import ErrorMsg from "./components/form/ErrorMsg.vue";
@@ -26,7 +29,10 @@ app.use(store);
 app.component("VForm", VForm);
 app.component("VField", VField);
 app.component("VErrorMessage", VErrorMessage);
+app.component("BaseLayout", BaseLayout);
+app.component("TheForm", TheForm);
 app.component("InputGroup", InputGroup);
+app.component("InputRadioLayout", InputRadioLayout);
 app.component("InputRadioTitle", InputRadioTitle);
 app.component("InputRadioLabel", InputRadioLabel);
 app.component("ErrorMsg", ErrorMsg);

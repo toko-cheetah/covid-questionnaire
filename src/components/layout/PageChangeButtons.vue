@@ -21,7 +21,22 @@ import NextPage from "../icons/NextPage.vue";
 export default {
   components: { PreviousPage, NextPage },
 
-  props: ["hidePreviousBtn", "hideNextBtn", "previousPageName"],
+  props: {
+    hidePreviousBtn: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    hideNextBtn: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    previousPageName: {
+      type: String,
+      required: false,
+    },
+  },
 
   methods: {
     validateForm() {

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between">
-    <div class="w-1/3">
-      <VForm @submit="visitNextPage">
+  <BaseLayout>
+    <template #left-side>
+      <TheForm nextPageName="covid_condition">
         <InputGroup
           label="სახელი*"
           name="first_name"
@@ -22,26 +22,24 @@
           type="email"
           rules="required|email|redberry_email"
         />
-
-        <button class="btn" hidden></button>
-      </VForm>
+      </TheForm>
 
       <hr class="bg-black w-1/2 mt-24 mb-5" />
       <p class="text-base">
         *-ით მონიშნული ველების შევსება <br />
         სავალდებულოა
       </p>
-    </div>
+    </template>
 
-    <div class="-mt-16 relative">
+    <template #right-side>
       <img
         src="../images/couple.png"
         alt="Couple with star eyes"
-        class="relative z-10"
+        class="-mt-16 relative z-10"
       />
-      <RectangleYellow class="absolute top-[28%] left-[10%] w-4/5" />
-    </div>
-  </div>
+      <RectangleYellow class="absolute top-[22%] left-[10%] w-4/5" />
+    </template>
+  </BaseLayout>
 
   <PageChangeButtons :hidePreviousBtn="true" />
 </template>
@@ -51,11 +49,5 @@ import RectangleYellow from "../components/icons/RectangleYellow.vue";
 
 export default {
   components: { RectangleYellow },
-
-  methods: {
-    visitNextPage() {
-      this.$router.push({ name: "covid_condition" });
-    },
-  },
 };
 </script>
