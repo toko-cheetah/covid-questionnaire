@@ -33,13 +33,13 @@
       </p>
     </div>
 
-    <div class="max-w-[50%] -mt-16 relative">
+    <div class="-mt-16 relative">
       <img
         src="../images/couple.png"
         alt="Couple with star eyes"
         class="relative z-10"
       />
-      <RectangleYellow class="absolute top-[27%] left-[10%] w-4/5" />
+      <RectangleYellow class="absolute top-[28%] left-[10%] w-4/5" />
     </div>
   </div>
 
