@@ -16,7 +16,13 @@ export default {
     RedberryName,
   },
 
-  props: ["currentRouteName"],
+  props: {
+    currentRouteName: {
+      type: String,
+      default: "",
+      required: true,
+    },
+  },
 
   data() {
     return {
@@ -24,6 +30,7 @@ export default {
         personal_info: "1",
         covid_condition: "2",
         are_you_vaccinated: "3",
+        covid_policy: "4",
       },
     };
   },

@@ -25,7 +25,36 @@
 
 <script>
 export default {
-  props: ["label", "name", "type", "rules", "placeholder", "onfocus", "onblur"],
+  props: {
+    label: {
+      type: String,
+      required: false,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    rules: {
+      type: String,
+      required: false,
+    },
+    placeholder: {
+      type: String,
+      required: false,
+    },
+    onfocus: {
+      type: String,
+      required: false,
+    },
+    onblur: {
+      type: String,
+      required: false,
+    },
+  },
 
   methods: {
     value(name) {
@@ -41,7 +70,7 @@ export default {
       this.$store.commit("updateValue", {
         key: e.target.name,
         message:
-          e.target.type === "date"
+          e.target.name === "covid_sickness_date"
             ? new Date(e.target.value).toLocaleDateString("en-GB")
             : e.target.type === "number"
             ? Number(e.target.value)

@@ -1,21 +1,21 @@
 <template>
-  <div class="flex justify-between">
-    <div class="w-1/3">
-      <VForm @submit="visitNextPage">
-        <div class="relative mb-12">
+  <BaseLayout>
+    <template #left-side>
+      <TheForm nextPageName="are_you_vaccinated">
+        <InputRadioLayout>
           <InputRadioTitle>გაქვს გადატანილი Covid-19?*</InputRadioTitle>
           <InputRadioLabel name="had_covid" value="yes" label="კი" />
           <InputRadioLabel name="had_covid" value="no" label="არა" />
           <InputRadioLabel
             name="had_covid"
-            value="currently_have"
+            value="have_right_now"
             label="ახლა მაქვს"
           />
           <VField name="had_covid" :value="value('had_covid')" hidden checked />
           <ErrorMsg name="had_covid" />
-        </div>
+        </InputRadioLayout>
 
-        <div class="relative mb-12" v-if="value('had_covid') === 'yes'">
+        <InputRadioLayout v-if="value('had_covid') === 'yes'">
           <InputRadioTitle
             >ანტისხეულების ტესტი გაქვს გაკეთებული?*</InputRadioTitle
           >
@@ -31,7 +31,7 @@
             checked
           />
           <ErrorMsg name="had_antibody_test" />
-        </div>
+        </InputRadioLayout>
 
         <div v-if="value('had_covid') === 'yes'">
           <div v-if="value('had_antibody_test') === true">
@@ -64,19 +64,18 @@
             />
           </div>
         </div>
-        <button class="btn" hidden></button>
-      </VForm>
-    </div>
+      </TheForm>
+    </template>
 
-    <div class="-mt-12 relative">
+    <template #right-side>
       <img
         src="../images/vaccinate.png"
         alt="boy with a high fever"
-        class="relative z-10"
+        class="-mt-12 relative z-10"
       />
-      <RedCircle class="absolute top-[235px] left-[80px]" />
-    </div>
-  </div>
+      <RedCircle class="absolute top-[190px] left-[80px]" />
+    </template>
+  </BaseLayout>
 
   <PageChangeButtons previousPageName="personal_info" />
 </template>
@@ -90,10 +89,6 @@ export default {
   methods: {
     value(name) {
       return this.$store.state[name] && this.$store.state[name];
-    },
-
-    visitNextPage() {
-      this.$router.push({ name: "are_you_vaccinated" });
     },
   },
 };
