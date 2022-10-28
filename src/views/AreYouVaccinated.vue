@@ -3,7 +3,7 @@
     <template #left-side>
       <TheForm nextPageName="covid_policy">
         <InputRadioLayout>
-          <InputRadioTitle>უკვე აცრილი ხარ?*</InputRadioTitle>
+          <InputTitle>უკვე აცრილი ხარ?*</InputTitle>
           <InputRadioLabel name="had_vaccine" value="true" label="კი" />
           <InputRadioLabel name="had_vaccine" value="false" label="არა" />
           <VField
@@ -18,7 +18,7 @@
         </InputRadioLayout>
 
         <InputRadioLayout v-if="value('had_vaccine') === true">
-          <InputRadioTitle>აირჩიე რა ეტაპზე ხარ*</InputRadioTitle>
+          <InputTitle>აირჩიე რა ეტაპზე ხარ*</InputTitle>
           <InputRadioLabel
             name="vaccination_stage"
             value="first_dosage_and_registered_on_the_second"
@@ -44,7 +44,7 @@
         </InputRadioLayout>
 
         <InputRadioLayout v-if="value('had_vaccine') === false">
-          <InputRadioTitle>რას ელოდები?*</InputRadioTitle>
+          <InputTitle>რას ელოდები?*</InputTitle>
           <InputRadioLabel
             name="i_am_waiting"
             value="registered_and_waiting"

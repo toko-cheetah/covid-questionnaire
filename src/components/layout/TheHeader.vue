@@ -1,6 +1,6 @@
 <template>
   <header
-    v-if="currentRouteName !== 'home'"
+    v-if="currentRouteName !== 'home' && currentRouteName !== 'thank_you'"
     class="flex justify-between items-center font-anonymous-pro-bold text-4xl border-b-2 border-gray-800 pb-2 mb-10"
   >
     <RedberryName />

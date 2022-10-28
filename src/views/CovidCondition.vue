@@ -3,7 +3,7 @@
     <template #left-side>
       <TheForm nextPageName="are_you_vaccinated">
         <InputRadioLayout>
-          <InputRadioTitle>გაქვს გადატანილი Covid-19?*</InputRadioTitle>
+          <InputTitle>გაქვს გადატანილი Covid-19?*</InputTitle>
           <InputRadioLabel name="had_covid" value="yes" label="კი" />
           <InputRadioLabel name="had_covid" value="no" label="არა" />
           <InputRadioLabel
@@ -16,9 +16,7 @@
         </InputRadioLayout>
 
         <InputRadioLayout v-if="value('had_covid') === 'yes'">
-          <InputRadioTitle
-            >ანტისხეულების ტესტი გაქვს გაკეთებული?*</InputRadioTitle
-          >
+          <InputTitle>ანტისხეულების ტესტი გაქვს გაკეთებული?*</InputTitle>
           <InputRadioLabel name="had_antibody_test" value="true" label="კი" />
           <InputRadioLabel name="had_antibody_test" value="false" label="არა" />
           <VField
