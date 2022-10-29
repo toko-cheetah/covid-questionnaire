@@ -9,7 +9,8 @@
           <VField
             name="had_vaccine"
             :value="
-              value('had_vaccine') !== null && value('had_vaccine').toString()
+              $store.state['had_vaccine'] !== null &&
+              $store.state['had_vaccine'].toString()
             "
             hidden
             checked
@@ -17,7 +18,7 @@
           <ErrorMsg name="had_vaccine" />
         </InputRadioLayout>
 
-        <InputRadioLayout v-if="value('had_vaccine') === true">
+        <InputRadioLayout v-if="$store.state['had_vaccine'] === true">
           <InputTitle>აირჩიე რა ეტაპზე ხარ*</InputTitle>
           <InputRadioLabel
             name="vaccination_stage"
@@ -36,14 +37,14 @@
           />
           <VField
             name="vaccination_stage"
-            :value="value('vaccination_stage')"
+            :value="$store.state['vaccination_stage']"
             hidden
             checked
           />
           <ErrorMsg name="vaccination_stage" />
         </InputRadioLayout>
 
-        <InputRadioLayout v-if="value('had_vaccine') === false">
+        <InputRadioLayout v-if="$store.state['had_vaccine'] === false">
           <InputTitle>რას ელოდები?*</InputTitle>
           <InputRadioLabel
             name="i_am_waiting"
@@ -62,7 +63,7 @@
           />
           <VField
             name="i_am_waiting"
-            :value="value('i_am_waiting')"
+            :value="$store.state['i_am_waiting']"
             hidden
             checked
           />
@@ -73,8 +74,9 @@
       <div class="ml-[54px]">
         <p
           v-if="
-            value('had_vaccine') === true &&
-            value('vaccination_stage') === 'first_dosage_and_not_registered_yet'
+            $store.state['had_vaccine'] === true &&
+            $store.state['vaccination_stage'] ===
+              'first_dosage_and_not_registered_yet'
           "
         >
           რომ არ გადადო,<br />
@@ -89,8 +91,9 @@
 
         <div
           v-if="
-            value('had_vaccine') === false &&
-            value('i_am_waiting') === 'had_covid_and_planning_to_be_vaccinated'
+            $store.state['had_vaccine'] === false &&
+            $store.state['i_am_waiting'] ===
+              'had_covid_and_planning_to_be_vaccinated'
           "
         >
           <p class="mb-6">
@@ -129,11 +132,5 @@ import YellowStar from "../components/icons/YellowStar.vue";
 
 export default {
   components: { YellowStar },
-
-  methods: {
-    value(name) {
-      return this.$store.state[name] && this.$store.state[name];
-    },
-  },
 };
 </script>

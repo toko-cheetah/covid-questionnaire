@@ -2,7 +2,7 @@
   <textarea
     class="w-full h-44 mb-12 py-2 px-5 bg-inherit border border-black"
     :name="name"
-    :value="value(name)"
+    :value="$store.state[name]"
     @input="updateValue"
   ></textarea>
 </template>
@@ -17,10 +17,6 @@ export default {
   },
 
   methods: {
-    value(name) {
-      return this.$store.state[name] && this.$store.state[name];
-    },
-
     updateValue(e) {
       this.$store.commit("updateValue", {
         key: e.target.name,

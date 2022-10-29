@@ -40,7 +40,7 @@
           />
           <VField
             name="non_formal_meetings"
-            :value="value('non_formal_meetings')"
+            :value="$store.state['non_formal_meetings']"
             hidden
             checked
           />
@@ -84,8 +84,8 @@
           <VField
             name="number_of_days_from_office"
             :value="
-              value('number_of_days_from_office') !== null &&
-              value('number_of_days_from_office').toString()
+              $store.state['number_of_days_from_office'] !== null &&
+              $store.state['number_of_days_from_office'].toString()
             "
             hidden
             checked
@@ -136,10 +136,6 @@ export default {
   components: { PinkHeart, TheTextarea },
 
   methods: {
-    value(name) {
-      return this.$store.state[name] && this.$store.state[name];
-    },
-
     validateForm() {
       return (
         document.querySelector(".btn") && document.querySelector(".btn").click()
