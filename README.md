@@ -1,35 +1,58 @@
-# covid-questionnaire
+# Covid-questionnaire
 
-This template should help get you started developing with Vue 3 in Vite.
+---
 
-## Recommended IDE Setup
+The Covid Questionnaire is an application that new employees of Redberry have to fill out to find out how they feel about the Covid situation and how Redberry can improve and support the company's internal Covid policy.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+#
 
-## Customize configuration
+### Table of Contents
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- [Prerequisites](#prerequisites)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Development](#development)
+- [Resources](#resources)
 
-## Project Setup
+#
+
+### Prerequisites
+
+- Vue.js 3
+
+### Tech Stack
+
+- Vuex
+- Vue Router
+- Vee-validate
+- Tailwind.CSS
+
+#
+
+### Getting Started
+
+```sh
+git clone https://github.com/RedberryInternship/tornike-khatiashvili-covid-questionnaire.git
+```
+
+Project Setup
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+#
+
+### Development
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Resources
 
-```sh
-npm run build
-```
+- https://covid-questionnaire.tornike-khatiashvili.redberryinternship.ge/
 
-### Lint with [ESLint](https://eslint.org/)
+- https://www.figma.com/file/56t2BI25FcD0LAIjR4GVkQ/%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90%E1%83%A0%E1%83%98
 
-```sh
-npm run lint
-```
+- https://covid19.devtest.ge/api-specs
