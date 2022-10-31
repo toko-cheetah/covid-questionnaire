@@ -4,6 +4,7 @@ import PersonalInfoView from "../views/PersonalInfoView.vue";
 import CovidCondition from "../views/CovidCondition.vue";
 import AreYouVaccinated from "../views/AreYouVaccinated.vue";
 import CovidPolicy from "../views/CovidPolicy.vue";
+import ThankYou from "../views/ThankYou.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/covid-policy",
       name: "covid_policy",
       component: CovidPolicy,
+    },
+    {
+      path: "/thank-you",
+      name: "thank_you",
+      component: ThankYou,
     },
   ],
 });

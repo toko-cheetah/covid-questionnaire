@@ -3,7 +3,7 @@
     <template #left-side>
       <TheForm nextPageName="are_you_vaccinated">
         <InputRadioLayout>
-          <InputRadioTitle>გაქვს გადატანილი Covid-19?*</InputRadioTitle>
+          <InputTitle>გაქვს გადატანილი Covid-19?*</InputTitle>
           <InputRadioLabel name="had_covid" value="yes" label="კი" />
           <InputRadioLabel name="had_covid" value="no" label="არა" />
           <InputRadioLabel
@@ -11,21 +11,24 @@
             value="have_right_now"
             label="ახლა მაქვს"
           />
-          <VField name="had_covid" :value="value('had_covid')" hidden checked />
+          <VField
+            name="had_covid"
+            :value="$store.state['had_covid']"
+            hidden
+            checked
+          />
           <ErrorMsg name="had_covid" />
         </InputRadioLayout>
 
-        <InputRadioLayout v-if="value('had_covid') === 'yes'">
-          <InputRadioTitle
-            >ანტისხეულების ტესტი გაქვს გაკეთებული?*</InputRadioTitle
-          >
+        <InputRadioLayout v-if="$store.state['had_covid'] === 'yes'">
+          <InputTitle>ანტისხეულების ტესტი გაქვს გაკეთებული?*</InputTitle>
           <InputRadioLabel name="had_antibody_test" value="true" label="კი" />
           <InputRadioLabel name="had_antibody_test" value="false" label="არა" />
           <VField
             name="had_antibody_test"
             :value="
-              value('had_antibody_test') !== null &&
-              value('had_antibody_test').toString()
+              $store.state['had_antibody_test'] !== null &&
+              $store.state['had_antibody_test'].toString()
             "
             hidden
             checked
@@ -33,8 +36,8 @@
           <ErrorMsg name="had_antibody_test" />
         </InputRadioLayout>
 
-        <div v-if="value('had_covid') === 'yes'">
-          <div v-if="value('had_antibody_test') === true">
+        <div v-if="$store.state['had_covid'] === 'yes'">
+          <div v-if="$store.state['had_antibody_test'] === true">
             <InputGroup
               label="თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების რაოდენობა"
               name="test_date"
@@ -52,7 +55,7 @@
             />
           </div>
 
-          <div v-if="value('had_antibody_test') === false">
+          <div v-if="$store.state['had_antibody_test'] === false">
             <InputGroup
               label="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
               name="covid_sickness_date"
@@ -85,11 +88,5 @@ import RedCircle from "../components/icons/RedCircle.vue";
 
 export default {
   components: { RedCircle },
-
-  methods: {
-    value(name) {
-      return this.$store.state[name] && this.$store.state[name];
-    },
-  },
 };
 </script>

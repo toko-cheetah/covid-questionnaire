@@ -6,14 +6,14 @@
           label="სახელი*"
           name="first_name"
           type="text"
-          rules="required|min:2"
+          rules="required|min:3"
         />
 
         <InputGroup
           label="გვარი*"
           name="last_name"
           type="text"
-          rules="required|min:2"
+          rules="required|min:3"
         />
 
         <InputGroup
@@ -37,7 +37,7 @@
         alt="Couple with star eyes"
         class="-mt-16 relative z-10"
       />
-      <RectangleYellow class="absolute top-[22%] left-[10%] w-4/5" />
+      <RectangleYellow class="absolute top-[170px] left-[10%] w-4/5" />
     </template>
   </BaseLayout>
 

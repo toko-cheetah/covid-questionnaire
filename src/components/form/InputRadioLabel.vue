@@ -35,6 +35,8 @@ export default {
         message:
           e.target.value === "true" || e.target.value === "false"
             ? e.target.value === "true"
+            : e.target.name === "number_of_days_from_office"
+            ? Number(e.target.value)
             : e.target.value,
       });
     },
@@ -42,7 +44,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .radio {
   appearance: none;
   background-color: inherit;
