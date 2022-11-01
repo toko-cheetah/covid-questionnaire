@@ -40,7 +40,7 @@
           />
           <VField
             name="non_formal_meetings"
-            :value="$store.state['non_formal_meetings']"
+            :value="$store.state.dataToSend['non_formal_meetings']"
             hidden
             checked
           />
@@ -84,8 +84,8 @@
           <VField
             name="number_of_days_from_office"
             :value="
-              $store.state['number_of_days_from_office'] !== null &&
-              $store.state['number_of_days_from_office'].toString()
+              $store.state.dataToSend['number_of_days_from_office'] !== null &&
+              $store.state.dataToSend['number_of_days_from_office'].toString()
             "
             hidden
             checked
@@ -110,6 +110,12 @@
           დასრულება
         </button>
       </div>
+
+      <PageChangeButtons
+        previousPageName="are_you_vaccinated"
+        shapeId="heart"
+        :hideNextBtn="true"
+      />
     </template>
 
     <template #right-side>
@@ -118,14 +124,13 @@
         alt="A guy on a bike at an office entrance"
         class="relative z-10"
       />
-      <PinkHeart class="absolute top-[60px] left-[90px]" />
+      <PinkHeart
+        id="heart"
+        class="absolute top-[60px] left-[90px]"
+        :class="$store.state.animateClassList['heart']"
+      />
     </template>
   </BaseLayout>
-
-  <PageChangeButtons
-    previousPageName="are_you_vaccinated"
-    :hideNextBtn="true"
-  />
 </template>
 
 <script>
@@ -144,3 +149,32 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.heart-in {
+  animation: heart-in 0.1s ease;
+}
+@keyframes heart-in {
+  from {
+    transform: translateX(-100px) translateY(-30px);
+  }
+}
+
+.heart-in-reverse {
+  animation: heart-in-reverse 0.5s ease;
+}
+@keyframes heart-in-reverse {
+  to {
+    transform: translateX(-100px) translateY(-30px);
+  }
+}
+
+.heart-out {
+  animation: heart-out 0.5s ease;
+}
+@keyframes heart-out {
+  to {
+    transform: translateX(-250px) translateY(300px) scale(10);
+  }
+}
+</style>

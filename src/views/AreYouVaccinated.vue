@@ -1,7 +1,7 @@
 <template>
   <BaseLayout>
     <template #left-side>
-      <TheForm nextPageName="covid_policy">
+      <TheForm nextPageName="covid_policy" animateId="star">
         <InputRadioLayout>
           <InputTitle>უკვე აცრილი ხარ?*</InputTitle>
           <InputRadioLabel name="had_vaccine" value="true" label="კი" />
@@ -9,8 +9,8 @@
           <VField
             name="had_vaccine"
             :value="
-              $store.state['had_vaccine'] !== null &&
-              $store.state['had_vaccine'].toString()
+              $store.state.dataToSend['had_vaccine'] !== null &&
+              $store.state.dataToSend['had_vaccine'].toString()
             "
             hidden
             checked
@@ -18,7 +18,9 @@
           <ErrorMsg name="had_vaccine" />
         </InputRadioLayout>
 
-        <InputRadioLayout v-if="$store.state['had_vaccine'] === true">
+        <InputRadioLayout
+          v-if="$store.state.dataToSend['had_vaccine'] === true"
+        >
           <InputTitle>აირჩიე რა ეტაპზე ხარ*</InputTitle>
           <InputRadioLabel
             name="vaccination_stage"
@@ -37,14 +39,16 @@
           />
           <VField
             name="vaccination_stage"
-            :value="$store.state['vaccination_stage']"
+            :value="$store.state.dataToSend['vaccination_stage']"
             hidden
             checked
           />
           <ErrorMsg name="vaccination_stage" />
         </InputRadioLayout>
 
-        <InputRadioLayout v-if="$store.state['had_vaccine'] === false">
+        <InputRadioLayout
+          v-if="$store.state.dataToSend['had_vaccine'] === false"
+        >
           <InputTitle>რას ელოდები?*</InputTitle>
           <InputRadioLabel
             name="i_am_waiting"
@@ -63,7 +67,7 @@
           />
           <VField
             name="i_am_waiting"
-            :value="$store.state['i_am_waiting']"
+            :value="$store.state.dataToSend['i_am_waiting']"
             hidden
             checked
           />
@@ -74,8 +78,8 @@
       <div class="ml-[54px]">
         <p
           v-if="
-            $store.state['had_vaccine'] === true &&
-            $store.state['vaccination_stage'] ===
+            $store.state.dataToSend['had_vaccine'] === true &&
+            $store.state.dataToSend['vaccination_stage'] ===
               'first_dosage_and_not_registered_yet'
           "
         >
@@ -91,8 +95,8 @@
 
         <div
           v-if="
-            $store.state['had_vaccine'] === false &&
-            $store.state['i_am_waiting'] ===
+            $store.state.dataToSend['had_vaccine'] === false &&
+            $store.state.dataToSend['i_am_waiting'] ===
               'had_covid_and_planning_to_be_vaccinated'
           "
         >
@@ -112,6 +116,8 @@
           </p>
         </div>
       </div>
+
+      <PageChangeButtons previousPageName="covid_condition" shapeId="star" />
     </template>
 
     <template #right-side>
@@ -120,11 +126,13 @@
         alt="A doctor holding a needle"
         class="mt-8 relative z-10"
       />
-      <YellowStar class="absolute top-[10px] left-[30px]" />
+      <YellowStar
+        id="star"
+        class="absolute top-[10px] left-[30px]"
+        :class="$store.state.animateClassList['star']"
+      />
     </template>
   </BaseLayout>
-
-  <PageChangeButtons previousPageName="covid_condition" />
 </template>
 
 <script>
@@ -134,3 +142,41 @@ export default {
   components: { YellowStar },
 };
 </script>
+
+<style scoped>
+.star-in {
+  animation: star-in 0.1s ease;
+}
+@keyframes star-in {
+  from {
+    transform: translateX(-130px) translateY(160px);
+  }
+}
+
+.star-in-reverse {
+  animation: star-in-reverse 0.5s ease;
+}
+@keyframes star-in-reverse {
+  to {
+    transform: translateX(-130px) translateY(160px);
+  }
+}
+
+.star-out {
+  animation: star-out 0.5s ease;
+}
+@keyframes star-out {
+  to {
+    transform: translateX(100px) translateY(30px);
+  }
+}
+
+.star-out-reverse {
+  animation: star-out-reverse 0.1s ease;
+}
+@keyframes star-out-reverse {
+  from {
+    transform: translateX(100px) translateY(30px);
+  }
+}
+</style>

@@ -59,10 +59,11 @@ export default {
   methods: {
     value(name) {
       return (
-        (this.$store.state[name] || this.$store.state.antibodies[name]) &&
+        (this.$store.state.dataToSend[name] ||
+          this.$store.state.dataToSend.antibodies[name]) &&
         (name === "test_date" || name === "number"
-          ? this.$store.state.antibodies[name]
-          : this.$store.state[name])
+          ? this.$store.state.dataToSend.antibodies[name]
+          : this.$store.state.dataToSend[name])
       );
     },
 

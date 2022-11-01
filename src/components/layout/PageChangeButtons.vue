@@ -2,7 +2,10 @@
   <div
     class="absolute top-[950px] left-1/2 -translate-x-1/2 z-20 w-36 flex justify-between"
   >
-    <button :class="hidePreviousBtn ? 'invisible' : ''">
+    <button
+      :class="hidePreviousBtn ? 'invisible' : ''"
+      @click="animateShape(shapeId)"
+    >
       <router-link :to="{ name: previousPageName }">
         <PreviousPage />
       </router-link>
@@ -36,9 +39,27 @@ export default {
       type: String,
       required: false,
     },
+    shapeId: {
+      type: String,
+      required: false,
+    },
   },
 
   methods: {
+    animateShape(shapeId) {
+      shapeId &&
+        document
+          .getElementById(shapeId)
+          .classList.remove(`${shapeId}-out-reverse`),
+        document.getElementById(shapeId).classList.add(`${shapeId}-in-reverse`),
+        setTimeout(() => {
+          this.$store.commit("updateClassList", {
+            key: shapeId,
+            value: `${shapeId}-in`,
+          });
+        }, 200);
+    },
+
     validateForm() {
       return (
         document.querySelector(".btn") && document.querySelector(".btn").click()

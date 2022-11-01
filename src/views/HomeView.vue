@@ -3,11 +3,14 @@
     class="w-full h-full flex flex-col justify-center items-center bg-inherit"
   >
     <div class="p-12 bg-inherit z-10">
-      <RedberryLogo id="redberry-logo" />
+      <RedberryLogo id="logo" class="logo-in" />
     </div>
 
     <router-link :to="{ name: 'personal_info' }">
-      <p class="text-center font-tbc-contractica-caps-bold text-3xl relative">
+      <p
+        class="text-center font-tbc-contractica-caps-bold text-3xl relative"
+        @click="animate"
+      >
         კითხვარის <br />
         დაწყება
       </p>
@@ -21,6 +24,12 @@ import RedberryLogo from "../components/icons/RedberryLogo.vue";
 export default {
   components: {
     RedberryLogo,
+  },
+
+  methods: {
+    animate() {
+      document.getElementById("logo").classList.add("logo-out");
+    },
   },
 };
 </script>
@@ -52,17 +61,21 @@ p:hover::after {
   -webkit-text-stroke: 1px #232323;
 }
 
-#redberry-logo {
-  animation: 0.5s logo-scale ease-out;
+.logo-in {
+  animation: 0.5s logo-in ease;
 }
-
-@keyframes logo-scale {
-  0% {
+@keyframes logo-in {
+  from {
     transform: scale(42);
   }
+}
 
-  100% {
-    transform: scale(1);
+.logo-out {
+  animation: 0.5s logo-out ease;
+}
+@keyframes logo-out {
+  to {
+    transform: translateX(50px) translateY(-135px);
   }
 }
 </style>
