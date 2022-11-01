@@ -1,5 +1,7 @@
 <template>
-  <VForm @submit="useSendData ? sendData() : visitNextPage(nextPageName)">
+  <VForm
+    @submit="useSendData ? sendData() : visitNextPage(nextPageName, animateId)"
+  >
     <slot></slot>
     <button class="btn" hidden></button>
   </VForm>
@@ -19,15 +21,31 @@ export default {
       type: String,
       required: false,
     },
+    animateId: {
+      type: String,
+      required: false,
+    },
   },
 
   methods: {
-    visitNextPage(nextPageName) {
+    visitNextPage(nextPageName, animateId) {
+      animateId &&
+        this.$store.commit("updateClassList", {
+          key: animateId,
+          value: `${animateId}-out`,
+        }),
+        setTimeout(() => {
+          this.$store.commit("updateClassList", {
+            key: animateId,
+            value: `${animateId}-out-reverse`,
+          });
+        }, 200);
+
       return nextPageName && this.$router.push({ name: nextPageName });
     },
 
     sendData() {
-      const store = JSON.parse(JSON.stringify(this.$store.state));
+      const store = JSON.parse(JSON.stringify(this.$store.state.dataToSend));
       let keys = Object.keys(store);
 
       keys =
@@ -69,7 +87,12 @@ export default {
 
       axios
         .post("https://covid19.devtest.ge/api/create", requestedData)
-        .then(() => this.$router.push({ name: "thank_you" }))
+        .then(
+          () => (
+            document.getElementById("heart").classList.add("heart-out"),
+            this.$router.push({ name: "thank_you" })
+          )
+        )
         .catch(() =>
           alert("დაფიქსირდა შეცდომა! გთხოვთ ახლიდან შეავსოთ ფორმა.")
         );
