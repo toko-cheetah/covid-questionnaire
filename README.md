@@ -32,7 +32,7 @@ The Covid Questionnaire is an application that new employees of Redberry have to
 ### Getting Started
 
 ```sh
-git clone https://github.com/RedberryInternship/tornike-khatiashvili-covid-questionnaire.git
+git clone https://github.com/toko-cheetah/covid-questionnaire.git
 ```
 
 Project Setup
@@ -50,9 +50,5 @@ npm run dev
 ```
 
 ### Resources
-
-- https://covid-questionnaire.tornike-khatiashvili.redberryinternship.ge/
-
-- https://www.figma.com/file/56t2BI25FcD0LAIjR4GVkQ/%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90%E1%83%A0%E1%83%98
 
 - https://covid19.devtest.ge/api-specs
